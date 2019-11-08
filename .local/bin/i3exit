@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+before_lock() {
+  killall compton
+  physlock -l
+}
+
+after_lock() {
+  compton & disown
+  physlock -L
+}
+
+case "$1" in
+  lock)
+    before_lock
+    xsecurelock
+    after_lock
+    ;;
+  logout)
+    i3-msg exit
+    ;;
+  suspend)
+    before_lock
+    systemctl suspend
+    xsecurelock
+    after_lock
+    ;;
+  reboot)
+    systemctl reboot
+    ;;
+  shutdown)
+    systemctl poweroff
+    ;;
+  *)
+    echo "Usage: $0 {lock|logout|suspend|reboot|shutdown}"
+    exit 2
+esac
+
+exit 0
