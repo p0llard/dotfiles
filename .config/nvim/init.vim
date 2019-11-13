@@ -48,3 +48,5 @@ set lazyredraw
 
 " For regular expressions turn magic on
 set magic
+
+set colorcolumn=78
