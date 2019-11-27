@@ -7,6 +7,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'lervag/vimtex'
 Plug 'lifepillar/vim-solarized8'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 let mapleader = ","
