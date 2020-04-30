@@ -59,10 +59,11 @@ bar {
     urgent_workspace   $color_bright_yellow   $color_bright_yellow    $color_normal_black
   }
 
+  tray_output none
+
   separator_symbol " | "
   status_command py3status --dbus-notify
   position top
-  tray_output none
 }
 
 
@@ -167,7 +168,6 @@ bindcode $mod+49 exec copyq toggle
 # Workspaces
 focus_follows_mouse no
 
-set $workspace0 workspace number 0
 set $workspace1 workspace number 1
 set $workspace2 workspace number 2
 set $workspace3 workspace number 3
@@ -177,6 +177,7 @@ set $workspace6 workspace number 6
 set $workspace7 workspace number 7
 set $workspace8 workspace number 8
 set $workspace9 workspace number 9
+set $workspace0 workspace number 10
 
 # Switch to workspace using keypad
 bindcode $numlock+$mod+87 $workspace1
@@ -227,7 +228,7 @@ bindsym $mod+Shift+9 move container to $workspace9
 bindsym $mod+Shift+0 move container to $workspace0
 
 # Automatically rename workspaces
-exec_always i3-autoname-workspaces &
+# exec_always i3-autoname-workspaces &
 
 # Resize window (r)
 set $mode_resize Resize window
@@ -294,7 +295,7 @@ mode "$mode_workspaces_monitors" {
 bindcode $mod+Shift+58 mode $mode_workspaces_monitors
 
 # Autostart some apps
-exec_always "killall compton; compton &"
+exec_always "killall compton; compton --backend glx --paint-on-overlay &"
 exec_always hsetroot -solid '#333333' &
 exec_always xss-lock -n /usr/lib/dimmer -l -- i3exit lock
 exec_always "pgrep -x udiskie || (udiskie --smart-tray &)"

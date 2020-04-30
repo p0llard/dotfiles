@@ -14,7 +14,6 @@ order += 'diskdata'
 order += 'group cpu'
 order += 'group ram'
 order += 'group wifi'
-order += 'whatismyip'
 order += 'backlight'
 #order += 'bluetooth'
 order += 'volume_status'
@@ -27,7 +26,7 @@ backlight {
   brightness_delta = 10
   low_tune_threshold = 10
   command = 'light'
-  format = '\?color=good  {level}%'
+  format = '\?color=good  {level}%'
   on_udev_backlight = 'refresh_and_freeze'
 }
 

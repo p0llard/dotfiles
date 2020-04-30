@@ -8,6 +8,9 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'lervag/vimtex'
 Plug 'lifepillar/vim-solarized8'
 Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'def-lkb/vimbufsync'
+Plug 'mileszs/ack.vim'
 call plug#end()
 
 let mapleader = ","
@@ -28,6 +31,7 @@ colorscheme solarized8
 map <leader>ss :setlocal spell!<cr>
 
 map <C-j> <C-W>j
+
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
@@ -35,19 +39,31 @@ map <C-l> <C-W>l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
 set hlsearch
 
 " Makes search act like search in modern browsers
-set incsearch 
+set incsearch
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw 
+set lazyredraw
 
 " For regular expressions turn magic on
 set magic
 
 set colorcolumn=78
+set tw=78
+
+" Hide -- INSERT --
+set noshowmode
+
+map <leader>nn :NERDTreeToggle<cr>
+
+set list listchars=trail:·,tab:!·
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
