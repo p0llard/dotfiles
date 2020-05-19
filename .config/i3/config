@@ -75,7 +75,9 @@ floating_modifier $mod
 
 # Start a terminal
 bindsym $mod+Return exec kitty
-bindsym $mod+Shift+Return exec kitty /bin/bash
+
+# Start emacs
+bindsym $mod+Shift+Return exec "emacsclient -c -a ''"
 
 # Start a launcher (=)(d)(o)(p)
 bindcode $mod+40 exec "pgrep -x rofi && killall rofi || rofi -normal-window -show drun"
@@ -295,7 +297,7 @@ mode "$mode_workspaces_monitors" {
 bindcode $mod+Shift+58 mode $mode_workspaces_monitors
 
 # Autostart some apps
-exec_always "killall compton; compton --backend glx --paint-on-overlay &"
+exec_always "killall picom; picom --backend glx &"
 exec_always hsetroot -solid '#333333' &
 exec_always xss-lock -n /usr/lib/dimmer -l -- i3exit lock
 exec_always "pgrep -x udiskie || (udiskie --smart-tray &)"
